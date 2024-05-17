@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api testing</title>
+    <style>
+        button {
+            padding: 10px;
+            background-color: greenyellow;
+            color: black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Api testing</h1>
+
+    <button onclick="handelclick( 'http://localhost:1080/chand', {name : 'kailash', age : '20'} )">click to test api</button>
+
+    <script>
+        async function handelclick(url, data = {}) {
+            const resp = await fetch(url, {
+                method : "POST",
+                mode : "cors",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(data)
+            })
+console.log(resp);
+            return resp.json()
+        }
+
+
+
+
+
+
+        // // async function postData(url = "", data = {}) {
+        //     const response = await fetch(url, {
+        //         method: "POST", // *GET, POST, PUT, DELETE, etc.
+        //         mode: "cors", // no-cors, *cors, same-origin
+        //         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        //         credentials: "same-origin", // include, *same-origin, omit
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //             // 'Content-Type': 'application/x-www-form-urlencoded',
+        //         },
+        //         redirect: "follow", // manual, *follow, error
+        //         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        //         body: JSON.stringify(data), // body data type must match "Content-Type" header
+        //     });
+        //     return response.json(); // parses JSON response into native JavaScript objects
+        // }
+
+        // postData("https://example.com/answer", { answer: 42 }).then((data) => {
+        //     console.log(data); // JSON data parsed by `data.json()` call
+        // });
+    </script>
+</body>
+
+</html>
